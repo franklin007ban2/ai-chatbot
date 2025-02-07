@@ -1,4 +1,10 @@
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
+
+const openai = createOpenAI({
+  baseURL: 'https://api.siliconflow.cn/v1'
+  // baseURL: 'https://open.bigmodel.cn/api/paas/v4/'
+  // baseURL: 'https://api.openai.com/v1'
+})
 import { fireworks } from '@ai-sdk/fireworks';
 import {
   customProvider,
@@ -18,6 +24,9 @@ export const myProvider = customProvider({
     }),
     'title-model': openai('gpt-4-turbo'),
     'block-model': openai('gpt-4o-mini'),
+    'ds': openai('deepseek-ai/DeepSeek-V3')
+    // 'ds': openai('glm-4-plus')
+    // 'ds': openai('gpt-4o-mini')
   },
   imageModels: {
     'small-model': openai.image('dall-e-2'),
